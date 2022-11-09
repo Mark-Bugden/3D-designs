@@ -39,6 +39,8 @@ screw_top_radius = 2.2;
 
 box_wall = (box_width-bulk_width)/2;
 
+rotate([180,0,0])
+
 difference()
 {
 // Lid

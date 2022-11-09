@@ -42,6 +42,9 @@ box_wall = (box_width-bulk_width)/2;
 
 
 //
+// Rotate and translate to put it in the right spot.
+rotate([0,180,0])
+translate([0,0,-box_height])
 
 difference()
 {

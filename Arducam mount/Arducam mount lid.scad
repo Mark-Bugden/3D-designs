@@ -46,6 +46,13 @@ difference()
 // Lid
 #cube([50,50,3.5]);
 
+
+// Cable hole
+translate([25-7.5,6,0])
+{
+cube([15,9,10]);
+}
+
 //Threaded lid insert1
 translate([box_wall/1.6, box_wall/1.6,-1])
 {

@@ -48,9 +48,9 @@ difference()
 
 
 // Cable hole
-translate([25-7.5,6,0])
+translate([25-12.5,6,0])
 {
-cube([15,9,10]);
+cube([25,12,10]);
 }
 
 //Threaded lid insert1

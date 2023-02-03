@@ -5,25 +5,25 @@
 //Motor hole properties
 axel_to_screw_centerline_dist = 8;
 screwhole_to_screwhole_dist = 35;
-axel_plug_r = 5;
+axel_plug_r = 4.75;
 axel_base_r = 5/2;
 axel_tip_w = 3;
 
 //Screw hole properties
 m3_head_r = 5/2;
-m3_head_h = 1;
+m3_head_h = 3;
 m3_body_r = 3/2;
 m3_washer_r = 3;
 m3_washer_h = 1;
 
 //Main plate geometry
-main_base_thickness = 3;
+main_base_thickness = 5;
 main_base_r = 90;
 
 
 difference(){
 //Main base
-cylinder(h=main_base_thickness, r=main_base_r, $fn=100);
+cylinder(h=main_base_thickness, r=main_base_r, $fn=500);
     
 
 

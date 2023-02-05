@@ -6,7 +6,7 @@ main_base_r = 90;
 main_ring_outer_r = 100;
 main_ring_inner_r = 95;
 main_ring_h = 60;
-ring_clearance = 5;
+ring_clearance = 10;
 
 //Motor hole properties
 axel_to_screw_centerline_dist = 8;
@@ -18,19 +18,19 @@ axel_tip_w = 3;
 
 //Arm geometry
 arm_length = 2*main_ring_inner_r - ring_clearance;
-arm_width = 5;
+arm_width = 7;
 groove_r = 3;
 n_grooves = 10;
 
 //Axel geometry
 axel_r = 5/2;
-axel_w = 3/2;
+axel_w = 3.6;
 axel_h = 8;
-axel_small_h = 5;
+axel_small_h = 0;
 
 //Connector geometry
-connector_r = axel_r;
-connector_h = 10;
+connector_r = 2*axel_r;
+connector_h = 20;
 
 difference(){
     union(){
@@ -44,7 +44,7 @@ difference(){
 
             //Grooves
             translate([arm_length/(4*n_grooves), arm_width, 0]){
-                for (i = [0:n_grooves]){
+                for (i = [1:n_grooves]){
                     translate([i*arm_length/(2*n_grooves), 0, 0,]){
                         rotate([90, 0, 0]) cylinder(h=2*arm_width, r=groove_r, $fn=50);  
                     }
@@ -54,18 +54,21 @@ difference(){
         }
         
         //Connector
-        cylinder(h=connector_h, r=connector_r, $fn=20);
-
+        translate([0,0,-connector_h/2]){
+            cylinder(h=connector_h, r=connector_r, $fn=50);
+        }
 
     }
     
     //Connector hole
-    cylinder(h=axel_small_h, r=axel_r, $fn=50);
+//    translate([0,0,-connector_h/2]){
+//        %cylinder(h=axel_small_h, r=axel_r, $fn=50);
+//    }
     
-    
-    intersection(){
-        cube([axel_w, 20,20],center=true);
-        cylinder(h=axel_h, r=axel_r, $fn=50);
+    translate([0,0,-connector_h/2]){
+        intersection(){
+            cube([axel_w, 20,20],center=true);
+            cylinder(h=axel_h, r=axel_r, $fn=50);
+        }
     }
-    
 }

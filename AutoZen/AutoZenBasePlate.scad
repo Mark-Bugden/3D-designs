@@ -18,7 +18,7 @@ m3_washer_h = 1;
 
 //Main plate geometry
 main_base_thickness = 5;
-main_base_r = 90;
+main_base_r = 94;
 
 
 difference(){

@@ -24,7 +24,7 @@ n_grooves = 10;
 
 //Axel geometry
 axel_r = 5/2;
-axel_w = 3;
+axel_w = 3.6;
 axel_h = 8;
 axel_small_h = 3;
 

@@ -20,7 +20,11 @@ axel_tip_w = 3;
 arm_length = 2*main_ring_inner_r - ring_clearance;
 arm_width = 7;
 groove_r = 3;
+//The actual number of grooves is this +1
 n_grooves = 10;
+
+arm_h_offset = 1.49;
+
 
 //Axel geometry
 axel_r = 5/2;
@@ -29,7 +33,7 @@ axel_h = 8;
 axel_small_h = 0;
 
 //Connector geometry
-connector_r = 2*axel_r;
+connector_r = 7;
 connector_h = 15;
 
 difference(){
@@ -37,11 +41,15 @@ difference(){
         //Grooved arm
         difference(){
             //Main arm
-            translate([-arm_length/2, -arm_width/2, 0]){
-                
-                cube([arm_length, arm_width, 10]);
-            }    
-
+            difference(){
+                translate([-arm_length/2, -arm_width/2, 0]){
+                    
+                    cube([arm_length, arm_width, 10]);
+                }   
+                translate([-arm_length/2,-arm_width/2,-10+arm_h_offset]){
+                    cube([arm_length/2,arm_width,10]);
+                }
+            }
             //Grooves
             translate([arm_length/(4*n_grooves), arm_width, 0]){
                 for (i = [1:n_grooves]){
@@ -68,7 +76,7 @@ difference(){
     translate([0,0,-connector_h/2]){
         intersection(){
             cube([axel_w, 20,20],center=true);
-            cylinder(h=axel_h, r=axel_r, $fn=50);
+            cylinder(h=axel_h, r=axel_r+0.1, $fn=50);
         }
     }
 }

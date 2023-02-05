@@ -30,7 +30,7 @@ axel_small_h = 0;
 
 //Connector geometry
 connector_r = 2*axel_r;
-connector_h = 20;
+connector_h = 15;
 
 difference(){
     union(){
@@ -54,7 +54,7 @@ difference(){
         }
         
         //Connector
-        translate([0,0,-connector_h/2]){
+        translate([0,0,-connector_h+10]){
             cylinder(h=connector_h, r=connector_r, $fn=50);
         }
 
